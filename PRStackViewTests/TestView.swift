@@ -1,0 +1,32 @@
+import UIKit
+
+class TestView: UIView {
+    
+    let index: Int
+    let size: CGSize
+
+    init(index: Int, size: CGSize) {
+        self.index = index
+        self.size = size
+        super.init(frame: CGRect.zero)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override var description: String  {
+        return "TestView\(index)"
+    }
+    
+    override var intrinsicContentSize : CGSize {
+        return size
+    }
+}
+
+ func ==(lhs: NSObject, rhs: NSObject) -> Bool {
+    if let lhs = lhs as? TestView, let rhs = rhs as? TestView {
+        return lhs.index == rhs.index
+    }
+    return lhs === rhs
+}
